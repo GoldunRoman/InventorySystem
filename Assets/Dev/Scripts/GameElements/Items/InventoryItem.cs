@@ -2,7 +2,14 @@ using UnityEngine;
 
 public class InventoryItem : MonoBehaviour, IDragable
 {
-    public ItemType ItemType { get; protected set; }
+    private InventoryItemConfig _config;
+
+    public ItemType ItemType { get { return _config.ItemType; } }
+
+    public void Initialize(InventoryItemConfig config)
+    {
+        _config = config;
+    }
 
     public void OnDragEnd()
     {
