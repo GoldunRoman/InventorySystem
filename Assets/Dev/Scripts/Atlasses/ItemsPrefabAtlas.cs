@@ -7,10 +7,10 @@ public class ItemsPrefabAtlas : ScriptableObject
 {
     [SerializeField] private List<ItemData> _itemsDatas;
 
-    public InventoryItem GetItem(ItemType itemType) => _itemsDatas.FirstOrDefault(itm => itm.Type == itemType).Prefab;
+    public ItemData GetItemData(ItemType itemType) => _itemsDatas.FirstOrDefault(itm => itm.Type == itemType);
 
     [System.Serializable]
-    private class ItemData 
+    public class ItemData 
     {
         [field: SerializeField] public InventoryItem Prefab { get; private set; }
         [field: SerializeField] public InventoryItemConfig Config { get; private set; }
