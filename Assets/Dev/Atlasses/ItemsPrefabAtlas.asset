@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d775b3b48ada984ba8c7dc31b9f77db, type: 3}
+  m_Name: ItemsPrefabAtlas
+  m_EditorClassIdentifier: 
+  _itemsDatas:
+  - <Prefab>k__BackingField: {fileID: 7813275030143334796, guid: ca63a9e21059f8d49a88d6284cd13fae,
+      type: 3}
+    <Config>k__BackingField: {fileID: 11400000, guid: 6b662cf6271d3384d81b52be0cc4b9f0,
+      type: 2}
+  - <Prefab>k__BackingField: {fileID: -9123756092507174321, guid: f25ce126f30c7d140b721108ec6859f0,
+      type: 3}
+    <Config>k__BackingField: {fileID: 11400000, guid: 849f563072ed1804981886edbff6cd0d,
+      type: 2}
+  - <Prefab>k__BackingField: {fileID: -3783448878192584150, guid: c78fc986aa5c5a446a1ac7621dca686f,
+      type: 3}
+    <Config>k__BackingField: {fileID: 11400000, guid: f0454e2c1b78a6e41baf3b1cf40f4010,
+      type: 2}
