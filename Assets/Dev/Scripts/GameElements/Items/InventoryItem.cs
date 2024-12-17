@@ -1,7 +1,9 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class InventoryItem : MonoBehaviour, IDragable
 {
+    private Rigidbody _rigidbody;
     private InventoryItemConfig _config;
 
     public ItemType ItemType { get { return _config.ItemType; } }
@@ -11,13 +13,17 @@ public class InventoryItem : MonoBehaviour, IDragable
     public void Initialize(InventoryItemConfig config)
     {
         _config = config;
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     public void OnDragEnd()
     {
+        _rigidbody.isKinematic = false;
+        transform.rotation = Quaternion.identity;
     }
 
     public void OnDragStart()
     {
+        _rigidbody.isKinematic = true;
     }
 }

@@ -7,6 +7,7 @@ public class Backpack : MonoBehaviour
 {
     [SerializeField] private float _pickupRadius = 2.0f;
     [SerializeField] private float _moveDuration = 0.5f;
+    [SerializeField] private float _liftHeight = 2f;
     [SerializeField] private List<BackpackSlot> _itemSlots;
 
     public bool TryCollectItem(IDragable dragable)
@@ -32,7 +33,14 @@ public class Backpack : MonoBehaviour
             item.IsInBackpack = true;
             availableSlot.IsFree = false;
 
-            dragable.Transform.DOLocalMove(Vector3.zero, _moveDuration)
+            Vector3 startPos = dragable.Transform.position;
+            Vector3 targetPos = availableSlot.Transform.position;
+
+            Vector3 arcPoint = (startPos + targetPos) / 2 + Vector3.up * _liftHeight;
+
+            Vector3[] path = new Vector3[] { startPos, arcPoint, targetPos };
+
+            dragable.Transform.DOPath(path, _moveDuration, PathType.CatmullRom)
                 .SetEase(Ease.InOutQuad)
                 .OnComplete(() =>
                 {
