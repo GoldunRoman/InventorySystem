@@ -73,8 +73,5 @@ public class DragDropInput : MonoBehaviour
         }
     }
 
-    private void OnMouseRelease(InputAction.CallbackContext context)
-    {
-        _dragDropHandler.EndDragging();
-    }
+    private void OnMouseRelease(InputAction.CallbackContext context) => _dragDropHandler.EndDragging();
 }

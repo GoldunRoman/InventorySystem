@@ -17,10 +17,7 @@ public class InventoryItem : MonoBehaviour, IDragable
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    public void OnDragStart()
-    {
-        _rigidbody.isKinematic = true;
-    }
+    public void OnDragStart() => _rigidbody.isKinematic = true;
 
     public void OnDragEnd()
     {

@@ -15,7 +15,7 @@ public class EntryPoint : MonoBehaviour
         _backpackView = backpackView;
     }
 
-    private void Start()
+    private void Awake()
     {
         Initialize();
     }
