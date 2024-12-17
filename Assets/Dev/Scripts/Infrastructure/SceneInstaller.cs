@@ -1,16 +1,21 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Zenject;
 
 public class SceneInstaller : MonoInstaller
 {
     [SerializeField] private ItemsPrefabAtlas _itemsPrefabAtlas;
     [SerializeField] private ItemsCreator _itemsCreator;
+    [SerializeField] private DragDropHandler _dragDropHandler;
+    [SerializeField] private InputActionAsset _inputActions;
 
     public override void InstallBindings()
     {
         #region General Bindings
         Container.Bind<ItemsPrefabAtlas>().FromInstance(_itemsPrefabAtlas).AsSingle();
         Container.Bind<ItemsCreator>().FromInstance(_itemsCreator).AsSingle();
+        Container.Bind<DragDropHandler>().FromInstance(_dragDropHandler).AsSingle();
+        Container.Bind<InputActionAsset>().FromInstance(_inputActions).AsSingle();
         #endregion
 
         #region Factory Bindings
