@@ -18,6 +18,7 @@ public class SceneInstaller : MonoInstaller
         Container.Bind<DragDropHandler>().FromInstance(_dragDropHandler).AsSingle();
         Container.Bind<InputActionAsset>().FromInstance(_inputActions).AsSingle();
         Container.Bind<Backpack>().FromInstance(_backpack).AsSingle();
+        Container.Bind<InventoryServerCommunicator>().AsSingle();
         #endregion
 
         #region Factory Bindings

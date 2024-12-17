@@ -51,7 +51,7 @@ public class DragDropHandler : MonoBehaviour
         {
             if (item.IsInBackpack)
             {
-                _backpack.ReleaseItemSlot(item.ItemType);
+                _backpack.ReleaseItemSlot(item);
                 item.IsInBackpack = false;
             }
             else
