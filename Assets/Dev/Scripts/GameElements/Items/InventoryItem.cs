@@ -5,6 +5,7 @@ public class InventoryItem : MonoBehaviour, IDragable
     private InventoryItemConfig _config;
 
     public ItemType ItemType { get { return _config.ItemType; } }
+    public Transform Transform { get { return transform; } }
 
     public void Initialize(InventoryItemConfig config)
     {
@@ -13,11 +14,9 @@ public class InventoryItem : MonoBehaviour, IDragable
 
     public void OnDragEnd()
     {
-        throw new System.NotImplementedException();
     }
 
     public void OnDragStart()
     {
-        throw new System.NotImplementedException();
     }
 }
