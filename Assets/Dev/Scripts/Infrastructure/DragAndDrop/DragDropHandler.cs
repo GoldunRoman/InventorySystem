@@ -1,14 +1,23 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Zenject;
 
 public class DragDropHandler : MonoBehaviour
 {
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private float _liftHeight = 1.0f;
 
+    private Backpack _backpack;
+
     private IDragable _draggingItem;
     private Vector3 _offsetFromGround;
     private Camera _mainCamera;
+
+    [Inject]
+    public void Construct(Backpack backpack)
+    {
+        _backpack = backpack;
+    }
 
     public void Initialize()
     {
@@ -35,11 +44,30 @@ public class DragDropHandler : MonoBehaviour
 
     public void EndDragging()
     {
-        if (_draggingItem == null) return;
+        if (_draggingItem == null)
+            return;
+
+        if (_draggingItem is InventoryItem item)
+        {
+            if (item.IsInBackpack)
+            {
+                _backpack.ReleaseItemSlot(item);
+                item.IsInBackpack = false;
+            }
+            else
+            {
+                if (_backpack.TryCollectItem(_draggingItem))
+                {
+                    item.IsInBackpack = true;
+                    _draggingItem = null;
+                    return;
+                }
+            }
+        }
 
         if (TryGetMouseGroundPosition(out Vector3 groundPosition))
         {
-            _draggingItem.Transform.position = groundPosition + Vector3.up * 0.01f;
+            _draggingItem.Transform.position = groundPosition;
         }
 
         _draggingItem.OnDragEnd();
