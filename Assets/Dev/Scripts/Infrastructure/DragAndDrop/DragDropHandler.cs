@@ -13,17 +13,22 @@ public class DragDropHandler : MonoBehaviour
     private Vector3 _offsetFromGround;
     private Camera _mainCamera;
 
+    #region Zenject Constructor
     [Inject]
     public void Construct(Backpack backpack)
     {
         _backpack = backpack;
     }
+    #endregion
 
+    #region Initialization
     public void Initialize()
     {
         _mainCamera = Camera.main;
     }
+    #endregion
 
+    #region Dragging Methods
     public void StartDragging(IDragable item)
     {
         if (_draggingItem != null) return;
@@ -85,7 +90,9 @@ public class DragDropHandler : MonoBehaviour
             _draggingItem.Transform.position = targetPosition;
         }
     }
+    #endregion
 
+    #region Utility Methods
     private bool TryGetMouseGroundPosition(out Vector3 groundPosition)
     {
         groundPosition = Vector3.zero;
@@ -99,4 +106,5 @@ public class DragDropHandler : MonoBehaviour
 
         return false;
     }
+    #endregion
 }

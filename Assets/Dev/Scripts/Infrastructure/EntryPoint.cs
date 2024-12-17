@@ -5,15 +5,17 @@ public class EntryPoint : MonoBehaviour
 {
     private ItemsCreator _itemsCreator;
     private DragDropHandler _dragDropHandler;
+    private BackpackView _backpackView;
 
     [Inject]
-    public void Construct(ItemsCreator itemsCreator, DragDropHandler dragDropHandler)
+    public void Construct(ItemsCreator itemsCreator, DragDropHandler dragDropHandler, BackpackView backpackView)
     {
         _itemsCreator = itemsCreator;
         _dragDropHandler = dragDropHandler;
+        _backpackView = backpackView;
     }
 
-    private void Start()
+    private void Awake()
     {
         Initialize();
     }
@@ -22,5 +24,6 @@ public class EntryPoint : MonoBehaviour
     {
         _itemsCreator.Initialize();
         _dragDropHandler.Initialize();
+        _backpackView.Initialize();
     }
 }

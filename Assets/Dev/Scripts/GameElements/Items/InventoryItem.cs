@@ -17,14 +17,11 @@ public class InventoryItem : MonoBehaviour, IDragable
         _rigidbody = GetComponent<Rigidbody>();
     }
 
+    public void OnDragStart() => _rigidbody.isKinematic = true;
+
     public void OnDragEnd()
     {
         _rigidbody.isKinematic = false;
         transform.rotation = Quaternion.identity;
-    }
-
-    public void OnDragStart()
-    {
-        _rigidbody.isKinematic = true;
     }
 }
