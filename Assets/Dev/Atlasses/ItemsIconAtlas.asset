@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7771c9a62044cb64e875e05fb084740b, type: 3}
+  m_Name: ItemsIconAtlas
+  m_EditorClassIdentifier: 
+  _itemsIcons:
+  - <Icon>k__BackingField: {fileID: 21300000, guid: 5028db0978514ac478653532ee5c5cfc,
+      type: 3}
+    <ItemType>k__BackingField: 0
+  - <Icon>k__BackingField: {fileID: 21300000, guid: 774bbe3b71894724bbb7200ca515c1fa,
+      type: 3}
+    <ItemType>k__BackingField: 1
+  - <Icon>k__BackingField: {fileID: 21300000, guid: a3bf19cfa7f5c914d999b1ece456f564,
+      type: 3}
+    <ItemType>k__BackingField: 2

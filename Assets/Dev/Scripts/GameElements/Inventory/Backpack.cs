@@ -14,9 +14,10 @@ public class Backpack : MonoBehaviour
     [SerializeField] private float _pickupRadius = 2.0f;
     [SerializeField] private float _moveDuration = 0.5f;
     [SerializeField] private float _liftHeight = 2f;
-    [SerializeField] private List<BackpackSlot> _itemSlots;
 
     private InventoryServerCommunicator _serverCommunicator;
+
+    [field: SerializeField] public List<BackpackSlot> ItemSlots { get; private set; }
 
     #region Zenject Constructor
     [Inject]
@@ -60,6 +61,12 @@ public class Backpack : MonoBehaviour
         return false;
     }
 
+    public void ReleaseItemSlot(InventoryItem item)
+    {
+        ItemSlots.FirstOrDefault(slt => slt.ItemType == item.ItemType).IsFree = true;
+        _itemRemovedFromBackpack.Invoke(item.ID);
+    }
+
     private void CollectItem(InventoryItem inventoryItem)
     {
         BackpackSlot availableSlot = GetFreeSlot(inventoryItem);
@@ -89,18 +96,12 @@ public class Backpack : MonoBehaviour
             Debug.LogWarning("No free slots!");
         }
     }
-
-    public void ReleaseItemSlot(InventoryItem item)
-    {
-        _itemSlots.FirstOrDefault(slt => slt.ItemType == item.ItemType).IsFree = true;
-        _itemRemovedFromBackpack.Invoke(item.ID);
-    }
     #endregion
 
     #region Utility Methods
     private BackpackSlot GetFreeSlot(InventoryItem item)
     {
-        return _itemSlots.FirstOrDefault(slt => slt.ItemType == item.ItemType && slt.IsFree);
+        return ItemSlots.FirstOrDefault(slt => slt.ItemType == item.ItemType && slt.IsFree);
     }
     #endregion
 
@@ -131,7 +132,7 @@ public class Backpack : MonoBehaviour
     #endregion
 
     [System.Serializable]
-    private class BackpackSlot
+    public class BackpackSlot
     {
         [field: SerializeField] public ItemType ItemType { get; private set; }
         [field: SerializeField] public Transform Transform { get; private set; }
