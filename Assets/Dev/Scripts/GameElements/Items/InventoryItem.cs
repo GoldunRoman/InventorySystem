@@ -6,6 +6,7 @@ public class InventoryItem : MonoBehaviour, IDragable
 
     public ItemType ItemType { get { return _config.ItemType; } }
     public Transform Transform { get { return transform; } }
+    public bool IsInBackpack { get; set; }
 
     public void Initialize(InventoryItemConfig config)
     {
